@@ -1,0 +1,9 @@
+
+{% include 'partials/header.html' %}
+<body>Hello {{name}} !
+{% for todo in todos %}
+<p><a href="/todos/details/{{todo.id}}">{{todo.title}}</a> : {{todo.text}}</p>
+{% endfor %}
+</body>
+{% include 'partials/footer.html' %}
+
