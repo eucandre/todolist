@@ -1,12 +1,19 @@
 {% include 'partials/header.html' %}
 <form action="{% url 'add' %}" method="post">
 {% csrf_token %}
-  <label for="title">Title</label><br />
-  <input type="text" name="title" id="title" />
+  <label for="title">Title</label><br />{% if todo is not nll%}{% else todo.name='' %}
+
+  <input type="text" name="title" id="title" value="{% todo.name %}"/>
   <br>
   <label for="text">Text</label><br />
   <textarea name="text" id="text"></textarea>
-  <br><br>
+  <br>
+  <select name="priority">
+  {% for priority in priorities %}
+  <option value="{{priority.id}}">{{priority.name}}</option> 
+  {% endfor %}
+  </select>
+  <br>
   <input type="submit" value="Submit" />
 </form>
 <br>

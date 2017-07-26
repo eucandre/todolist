@@ -2,7 +2,33 @@
 <html lang="en">
 <head>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/stylesheet.css' %}">
+ 
+    <link rel="stylesheet" href="{% static 'css/semantic.min.css' %}">
+    <!--<link rel="stylesheet" href="{% static 'css/stylesheet.css' %}"/>!-->
     <meta charset="UTF-8">
+    {% load static %}
+ <script src="{% static 'js/jquery-3.1.0.min.js' %}"></script>
+    <script src="{% static 'js/semantic.min.js' %}"></script>
+   
     <title>Title</title>
 </head>
+<body>
+    <div class="ui secondary pointing menu">
+  <a class="item">
+    Home
+  </a>
+  <a class="item">
+    Messages
+    
+  </a>
+  <a class="item">
+    Friends
+  </a>
+  <div class="right menu">
+    <a class="ui item active">
+      Logout
+    </a>
+  </div>
+</div>
+
+    <div class="ui grid ">

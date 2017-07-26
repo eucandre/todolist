@@ -1,9 +1,50 @@
 
 {% include 'partials/header.html' %}
-<body>Hello {{name}} !
+  <div class="four wide column"><h1>title</h1></div>
+  <div class="four wide column"><h1>text</h1></div>
+  <div class="four wide column"><h1>priority</h1></div>
+  <div class="four wide column"><h1>Actions</h1></div>
 {% for todo in todos %}
-<p><a href="/todos/details/{{todo.id}}">{{todo.title}}</a> : {{todo.text}}</p>
+  <div class="four wide column"><a href="/todos/details/{{todo.id}}">{{todo.title}}</a></div>
+  <div class="four wide column">{{todo.text}}</div>
+  <div class="four wide column">{{todo.priority}}</div>
+  <div class="four wide column"><button class="negative ui button del" value="{{todo.id}}">delete</button> <button class="positive ui button edit" value="{{todo.id}}">edit</button></div>
 {% endfor %}
-</body>
+ {% block javascript %}
+<script>
+    $(".del").click(function () {
+     var id = this.value;
+     $.ajax({
+                url: "/todos/delid/"+id,
+                type: "get",
+                dataType: "json",
+                
+                success: function () {
+                     location.reload();
+                    console.log("Deleted data successfully");
+                },
+                error: function () {
+                    console.log("Delete failed!");
+                }
+            });
+    });
+     $(".edit").click(function () {
+     var id = this.value;
+     $.get({
+                url: "/todos/edit/"+id,
+                
+                dataType: "json",
+                
+                success: function (data) {
+                     
+                    console.log(data);
+                },
+                error: function (data) {
+                    console.log("error");
+                }
+            });
+    });
+  </script>
+ {% endblock %}
 {% include 'partials/footer.html' %}
 
