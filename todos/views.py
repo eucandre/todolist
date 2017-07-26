@@ -32,12 +32,7 @@ def add(request):
 def edit(request,id):
     priorities=Priority.objects.all()[:3]
     todo =Todos.objects.get(id=id)
-    context ={
-        'priorities':priorities,
-        'todo':todo
-        
-    }
-    return  render(request,'add.html',context)
+    return  render(id,'add.html',{'priorities':priorities,'todo':todo})
 
 
 def details(request,id):
