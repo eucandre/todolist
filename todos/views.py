@@ -30,9 +30,12 @@ def add(request):
         return  render(request,'add.html',context)
 
 def edit(request,id):
+    priorities=Priority.objects.all()[:3]
     todo =Todos.objects.get(id=id)
     context ={
+        'priorities':priorities,
         'todo':todo
+        
     }
     return  render(request,'add.html',context)
 
@@ -41,7 +44,8 @@ def details(request,id):
     
     todo =Todos.objects.get(id=id)
     context ={
-        'todo':todo
+        'todo':todo,
+      
     }
     return  render(request,'details.html',context)
 
